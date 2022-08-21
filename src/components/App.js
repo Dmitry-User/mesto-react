@@ -1,38 +1,61 @@
+import { useState } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
 import ImagePopup from "./ImagePopup";
-import PopupWithForm from "./PopupWithForm";
-
+import EditAvatarForm from "./EditAvatarForm";
+import EditProfileForm from "./EditProfileForm";
+import AddCardForm from "./AddCardForm";
 
 function App() {
-  //return (
-    // <div className="App">
-    //   <header className="App-header">
-    //     <img src={logo} className="App-logo" alt="logo" />
-    //     <p>
-    //       Edit <code>src/App.js</code> and save to reload.
-    //     </p>
-    //     <a
-    //       className="App-link"
-    //       href="https://reactjs.org"
-    //       target="_blank"
-    //       rel="noopener noreferrer"
-    //     >
-    //       Learn React
-    //     </a>
-    //   </header>
-    // </div>
-  //);
+
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  function handleEditAvatarClick() {
+    setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
+  }
+
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  function handleEditProfileClick() {
+    setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
+  }
+
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  function handleAddPlaceClick() {
+    setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
+  }
+
+  function closeAllPopups() {
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+  }
+
   return (
   <>
     <div className="wrapper">
       <Header/>
-      <Main/>
+      <Main
+        onEditAvatar={handleEditAvatarClick}
+        onEditProfile={handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+      />
       <Footer/>
     </div>
 
-    <PopupWithForm />
+    <EditAvatarForm
+      isOpen={isEditAvatarPopupOpen}
+      onClose={closeAllPopups}
+    />
+
+    <EditProfileForm
+      isOpen={isEditProfilePopupOpen}
+      onClose={closeAllPopups}
+    />
+
+    <AddCardForm
+      isOpen={isAddPlacePopupOpen}
+      onClose={closeAllPopups}
+    />
 
     {/* <div className="popup popup_type_edit-profile popup_background_light">
       <div className="popup__container">
