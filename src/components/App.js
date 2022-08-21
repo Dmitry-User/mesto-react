@@ -1,6 +1,8 @@
 import Footer from "./Footer";
 import Header from "./Header";
 import Main from "./Main";
+import ImagePopup from "./ImagePopup";
+import PopupWithForm from "./PopupWithForm";
 
 
 function App() {
@@ -30,19 +32,21 @@ function App() {
       <Footer/>
     </div>
 
-    <div className="popup popup_type_edit-profile popup_background_light">
+    <PopupWithForm />
+
+    {/* <div className="popup popup_type_edit-profile popup_background_light">
       <div className="popup__container">
         <button type="button" aria-label="Закрыть" className="popup__close element-hover"></button>
         <h2 className="popup__title">Редактировать профиль</h2>
-        <form novalidate name="edit-profile" className="form popup__form">
+        <form noValidate name="edit-profile" className="form popup__form">
           <label className="popup__label">
             <input
               required
               type="text"
               name="name"
               placeholder="Имя"
-              minlength="2"
-              maxlength="40"
+              minLength="2"
+              maxLength="40"
               className="popup__input popup__input_type_name"
             />
             <span className="popup__error name-error"></span>
@@ -53,8 +57,8 @@ function App() {
               type="text"
               name="about"
               placeholder="О себе"
-              minlength="2"
-              maxlength="200"
+              minLength="2"
+              maxLength="200"
               className="popup__input popup__input_type_about"
             />
             <span className="popup__error about-error"></span>
@@ -62,20 +66,20 @@ function App() {
           <button type="submit" aria-label="Сохранить" value="" className="popup__submit">Сохранить</button>
         </form>
       </div>
-    </div>
+    </div> */}
 
-    <div className="popup popup_type_add-card popup_background_light">
+    {/* <div className="popup popup_type_add-card popup_background_light">
       <div className="popup__container">
         <button type="button" aria-label="Закрыть" className="popup__close element-hover"></button>
         <h2 className="popup__title">Новое место</h2>
-        <form novalidate name="add-card" className="form popup__form">
+        <form noValidate name="add-card" className="form popup__form">
           <label className="popup__label">
             <input
               required
               type="text"
               name="name"
-              minlength="2"
-              maxlength="30"
+              minLength="2"
+              maxLength="30"
               placeholder="Название"
               className="popup__input popup__input_type_name"
             />
@@ -94,13 +98,13 @@ function App() {
           <button type="submit" aria-label="Сохранить" value="" className="popup__submit">Создать</button>
         </form>
       </div>
-    </div>
+    </div> */}
 
-    <div className="popup popup_type_edit-avatar popup_background_light">
+    {/* <div className="popup popup_type_edit-avatar popup_background_light">
       <div className="popup__container">
         <button type="button" aria-label="Закрыть" className="popup__close element-hover"></button>
         <h2 className="popup__title">Обновить аватар</h2>
-        <form novalidate name="edit-avatar" className="form popup__form">
+        <form noValidate name="edit-avatar" className="form popup__form">
           <label className="popup__label">
             <input
               required
@@ -114,25 +118,19 @@ function App() {
           <button type="submit" aria-label="Сохранить" value="" className="popup__submit">Сохранить</button>
         </form>
       </div>
-    </div>
+    </div> */}
 
-    <div className="popup popup_type_delete-card popup_background_light">
+    {/* <div className="popup popup_type_delete-card popup_background_light">
       <div className="popup__container">
         <button type="button" aria-label="Закрыть" className="popup__close element-hover"></button>
         <h2 className="popup__title">Вы уверены?</h2>
-        <form novalidate name="сonfirmation" className="form popup__form">
+        <form noValidate name="сonfirmation" className="form popup__form">
           <button type="submit" aria-label="Подтвердить" value="" className="popup__submit">Да</button>
         </form>
       </div>
-    </div>
+    </div> */}
 
-    <div className="popup popup_type_full-image popup_background_dark">
-      <figure className="popup__figure">
-        <img className="popup__image" src="#" alt="" />
-        <figcaption className="popup__image-caption"></figcaption>
-        <button type="button" aria-label="Закрыть" className="popup__close element-hover"></button>
-      </figure>
-    </div>
+    <ImagePopup />
 
     <template className="card-template">
       <article className="card">
