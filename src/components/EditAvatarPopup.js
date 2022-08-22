@@ -1,6 +1,6 @@
 import PopupWithForm from "./PopupWithForm";
 
-function EditAvatarForm(props) {
+function EditAvatarPopup(props) {
 
   return (
     <PopupWithForm
@@ -23,4 +23,4 @@ function EditAvatarForm(props) {
   );
 }
 
-export default EditAvatarForm;
+export default EditAvatarPopup;

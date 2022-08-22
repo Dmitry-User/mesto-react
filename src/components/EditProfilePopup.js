@@ -1,6 +1,6 @@
 import PopupWithForm from "./PopupWithForm";
 
-function EditProfileForm(props) {
+function EditProfilePopup(props) {
 
   return (
     <PopupWithForm
@@ -37,4 +37,4 @@ function EditProfileForm(props) {
   );
 }
 
-export default EditProfileForm;
+export default EditProfilePopup;

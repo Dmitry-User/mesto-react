@@ -1,6 +1,6 @@
 import PopupWithForm from "./PopupWithForm";
 
-function AddCardForm(props) {
+function AddPlacePopup(props) {
 
   return (
     <PopupWithForm
@@ -35,4 +35,4 @@ function AddCardForm(props) {
   );
 }
 
-export default AddCardForm;
+export default AddPlacePopup;
