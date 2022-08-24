@@ -24,16 +24,16 @@ function App() {
     setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
   }
 
-  // const [selectedCard, setSelectedCard] = useState(false);
-  // function handleCardClick() {
-  //   setSelectedCard(!selectedCard);
-  // }
+  const [selectedCard, setSelectedCard] = useState(false);
+  function handleCardClick(card) {
+    setSelectedCard(card);
+  }
 
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
-    // setSelectedCard(false);
+    setSelectedCard(false);
   }
 
   return (
@@ -43,8 +43,8 @@ function App() {
       <Main
         onEditAvatar={handleEditAvatarClick}
         onEditProfile={handleEditProfileClick}
-        onAddPlace={handleAddPlaceClick}
-        // onCardClick={handleCardClick}
+        onAddCard={handleAddPlaceClick}
+        onCardClick={handleCardClick}
       />
       <Footer />
     </div>
@@ -53,22 +53,18 @@ function App() {
       isOpen={isEditAvatarPopupOpen}
       onClose={closeAllPopups}
     />
-
     <EditProfilePopup
       isOpen={isEditProfilePopupOpen}
       onClose={closeAllPopups}
     />
-
     <AddPlacePopup
       isOpen={isAddPlacePopupOpen}
       onClose={closeAllPopups}
     />
-
     <ImagePopup
-      // card={selectedCard}
+      card={selectedCard}
       onClose={closeAllPopups}
     />
-
   </>
   );
 }

@@ -1,13 +1,13 @@
 import PopupWithForm from "./PopupWithForm";
 
-function EditProfilePopup(props) {
+function EditProfilePopup({ isOpen, onClose}) {
 
   return (
     <PopupWithForm
       name="edit-profile"
       title="Редактировать профиль"
-      isOpen={props.isOpen}
-      onClose={props.onClose}
+      isOpen={isOpen}
+      onClose={onClose}
     >
       <label className="popup__label">
         <input
@@ -19,7 +19,7 @@ function EditProfilePopup(props) {
           maxLength="40"
           required
         />
-        <span className="popup__error name-error"></span>
+        <span className="popup__error name-error" />
       </label>
       <label className="popup__label">
         <input
@@ -31,7 +31,7 @@ function EditProfilePopup(props) {
           maxLength="200"
           required
         />
-        <span className="popup__error about-error"></span>
+        <span className="popup__error about-error" />
       </label>
     </PopupWithForm>
   );

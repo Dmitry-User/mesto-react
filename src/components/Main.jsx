@@ -1,16 +1,15 @@
-
-import React from "react";
+import { useState, useEffect } from "react";
 import api from "../utils/Api";
 import Card from "./Card";
 
-function Main(props) {
+function Main({ onEditAvatar, onEditProfile, onAddCard, onCardClick }) {
 
-  const [userName, setUserName] = React.useState("Имя");
-  const [userDescription, setUserDescription] = React.useState("О себе");
-  const [userAvatar, setUserAvatar] = React.useState("");
-  const [cards, setCards] = React.useState([]);
+  const [userName, setUserName] = useState();
+  const [userDescription, setUserDescription] = useState();
+  const [userAvatar, setUserAvatar] = useState();
+  const [cards, setCards] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([{ about, avatar, name }, cards]) => {
         setUserDescription(about);
@@ -33,26 +32,30 @@ function Main(props) {
           <button
             className="profile__avatar-button"
             type="button"
-            onClick={props.onEditAvatar}
+            onClick={onEditAvatar}
             aria-label="Изменить аватар"
           />
         </div>
         <div className="profile__description">
           <div className="profile__top">
-            <h1 className="profile__name">{userName}</h1>
+            <h1 className="profile__name">
+              {userName}
+            </h1>
             <button
               className="profile__edit element-hover"
               type="button"
-              onClick={props.onEditProfile}
+              onClick={onEditProfile}
               aria-label="Редактировать"
             />
           </div>
-          <p className="profile__about">{userDescription}</p>
+          <p className="profile__about">
+            {userDescription}
+          </p>
         </div>
         <button
           className="profile__add-card element-hover"
           type="button"
-          onClick={props.onAddPlace}
+          onClick={onAddCard}
           aria-label="Добавить"
         />
       </section>
@@ -61,7 +64,7 @@ function Main(props) {
           <Card
             card={card}
             key={card._id}
-            // onCardClick={props.onCardClick}
+            onCardClick={onCardClick}
           />
         ))}
       </section>

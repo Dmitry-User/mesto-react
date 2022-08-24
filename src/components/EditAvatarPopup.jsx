@@ -1,13 +1,13 @@
 import PopupWithForm from "./PopupWithForm";
 
-function EditAvatarPopup(props) {
+function EditAvatarPopup({ isOpen, onClose}) {
 
   return (
     <PopupWithForm
       name="edit-avatar"
       title="Обновить аватар"
-      isOpen={props.isOpen}
-      onClose={props.onClose}
+      isOpen={isOpen}
+      onClose={onClose}
     >
       <label className="popup__label">
         <input
@@ -17,7 +17,7 @@ function EditAvatarPopup(props) {
           name="avatar"
           placeholder="Ссылка на фото"
         />
-        <span className="popup__error avatar-error"></span>
+        <span className="popup__error avatar-error" />
       </label>
     </PopupWithForm>
   );
