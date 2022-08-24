@@ -4,3 +4,13 @@
  * редактировать профиль
  * добовлять, удалять фотографии
  * ставить лайки
+
+(https://user-images.githubusercontent.com/101800268/171993443-1f168908-5e86-4367-96cd-769d9e118dcb.jpg)
+
+### Технологии
+* HTML5
+* CSS3
+* Nested BEM
+* Flexbox
+* Grid Layout
+* React
