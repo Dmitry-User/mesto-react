@@ -5,7 +5,7 @@
  * добовлять, удалять фотографии
  * ставить лайки
 
-(https://user-images.githubusercontent.com/101800268/171993443-1f168908-5e86-4367-96cd-769d9e118dcb.jpg)
+<img src="https://user-images.githubusercontent.com/101800268/171993443-1f168908-5e86-4367-96cd-769d9e118dcb.jpg">
 
 ### Технологии
 * HTML5
