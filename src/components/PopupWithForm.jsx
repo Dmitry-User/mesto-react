@@ -1,4 +1,4 @@
-function PopupWithForm({ name, title, isOpen, onClose, children }) {
+function PopupWithForm({ name, title, isOpen, onClose, children, buttonText }) {
 
   return (
     <div className={
@@ -28,9 +28,9 @@ function PopupWithForm({ name, title, isOpen, onClose, children }) {
             className="popup__submit"
             type="submit"
             value=""
-            aria-label="Сохранить"
+            aria-label={buttonText}
           >
-            Создать
+            {buttonText}
           </button>
         </form>
       </div>

@@ -6,6 +6,7 @@ function EditProfilePopup({ isOpen, onClose}) {
     <PopupWithForm
       name="edit-profile"
       title="Редактировать профиль"
+      buttonText="Сохранить"
       isOpen={isOpen}
       onClose={onClose}
     >

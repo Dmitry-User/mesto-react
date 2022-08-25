@@ -6,6 +6,7 @@ function AddPlacePopup({ isOpen, onClose}) {
     <PopupWithForm
       name="add-card"
       title="Новое место"
+      buttonText="Создать"
       isOpen={isOpen}
       onClose={onClose}
     >

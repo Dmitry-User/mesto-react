@@ -6,7 +6,7 @@ function ImagePopup({ card, onClose }) {
         popup
         popup_type_full-image
         popup_background_dark
-        ${card ? 'popup_is-open' : ''}
+        ${card.link ? 'popup_is-open' : ''}
       `
     }>
       <figure className="popup__figure">
