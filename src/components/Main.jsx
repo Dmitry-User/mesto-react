@@ -70,6 +70,7 @@ function Main({ onEditAvatar, onEditProfile, onAddCard, onCardClick }) {
       </section>
     </main>
   );
+  
 }
 
 export default Main;
