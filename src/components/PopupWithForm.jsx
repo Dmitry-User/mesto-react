@@ -1,13 +1,12 @@
-function PopupWithForm({ name, title, isOpen, onClose, children, buttonText }) {
-
+function PopupWithForm({ name, title, isOpen, onClose, onSubmit, children, buttonText }) {
   return (
-    <div className={
-      `
+    <div
+      className={`
         popup popup_type_${name}
         popup_background_light
-        ${isOpen ? 'popup_is-open' : ''}
-      `
-    }>
+        ${isOpen && "popup_is-open"}
+      `}
+    >
       <div className="popup__container">
         <button
           className="popup__close element-hover"
@@ -15,12 +14,11 @@ function PopupWithForm({ name, title, isOpen, onClose, children, buttonText }) {
           type="button"
           aria-label="Закрыть"
         />
-        <h2 className="popup__title">
-          {title}
-        </h2>
+        <h2 className="popup__title">{title}</h2>
         <form
           className="form popup__form"
           name={name}
+          onSubmit={onSubmit}
           noValidate
         >
           {children}
@@ -36,7 +34,6 @@ function PopupWithForm({ name, title, isOpen, onClose, children, buttonText }) {
       </div>
     </div>
   );
-  
 }
 
 export default PopupWithForm;

@@ -1,32 +1,26 @@
-import { useState, useEffect } from "react";
-import api from "../utils/Api";
+import { useContext } from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import Card from "./Card";
 
-function Main({ onEditAvatar, onEditProfile, onAddCard, onCardClick }) {
+function Main(props) {
+  const {
+    onEditAvatar,
+    onEditProfile,
+    onAddCard,
+    onCardClick,
+    cards,
+    onCardLike,
+    onCardDelete,
+  } = props;
+  const currentUser = useContext(CurrentUserContext);
 
-  const [userName, setUserName] = useState();
-  const [userDescription, setUserDescription] = useState();
-  const [userAvatar, setUserAvatar] = useState();
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([{ about, avatar, name }, cards]) => {
-        setUserDescription(about);
-        setUserAvatar(avatar);
-        setUserName(name);
-        setCards(cards);
-      })
-      .catch(err => console.log(err));
-  }, []);
-
-  return(
+  return (
     <main className="content">
       <section className="profile" aria-label="Секция профиль">
         <div className="profile__avatar">
           <img
             className="profile__avatar-image"
-            src={userAvatar}
+            src={currentUser.avatar}
             alt="Аватар"
           />
           <button
@@ -38,9 +32,7 @@ function Main({ onEditAvatar, onEditProfile, onAddCard, onCardClick }) {
         </div>
         <div className="profile__description">
           <div className="profile__top">
-            <h1 className="profile__name">
-              {userName}
-            </h1>
+            <h1 className="profile__name">{currentUser.name}</h1>
             <button
               className="profile__edit element-hover"
               type="button"
@@ -48,9 +40,7 @@ function Main({ onEditAvatar, onEditProfile, onAddCard, onCardClick }) {
               aria-label="Редактировать"
             />
           </div>
-          <p className="profile__about">
-            {userDescription}
-          </p>
+          <p className="profile__about">{currentUser.about}</p>
         </div>
         <button
           className="profile__add-card element-hover"
@@ -60,17 +50,18 @@ function Main({ onEditAvatar, onEditProfile, onAddCard, onCardClick }) {
         />
       </section>
       <section className="card-list" aria-label="Секция с карточками">
-        {cards.map(card => (
+        {cards.map((card) => (
           <Card
             card={card}
             key={card._id}
             onCardClick={onCardClick}
+            onCardLike={onCardLike}
+            onCardDelete={onCardDelete}
           />
         ))}
       </section>
     </main>
   );
-  
 }
 
 export default Main;
