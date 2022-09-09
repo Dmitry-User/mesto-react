@@ -1,11 +1,20 @@
-function PopupWithForm({ name, title, isOpen, onClose, onSubmit, children, buttonText }) {
+import Popup from "./Popup";
+
+function PopupWithForm({
+  name,
+  title,
+  isOpen,
+  onClose,
+  onSubmit,
+  children,
+  buttonText,
+}) {
   return (
-    <div
-      className={`
-        popup popup_type_${name}
-        popup_background_light
-        ${isOpen && "popup_is-open"}
-      `}
+    <Popup
+      isOpen={isOpen}
+      onClose={onClose}
+      children={children}
+      background="light"
     >
       <div className="popup__container">
         <button
@@ -32,7 +41,7 @@ function PopupWithForm({ name, title, isOpen, onClose, onSubmit, children, butto
           </button>
         </form>
       </div>
-    </div>
+    </Popup>
   );
 }
 

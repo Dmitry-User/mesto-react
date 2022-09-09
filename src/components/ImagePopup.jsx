@@ -1,23 +1,19 @@
-function ImagePopup({ card, onClose }) {
+import Popup from "./Popup";
 
+function ImagePopup({ card, isOpen, onClose }) {
   return (
-    <div className={
-      `
-        popup
-        popup_type_full-image
-        popup_background_dark
-        ${card.link ? 'popup_is-open' : ''}
-      `
-    }>
+    <Popup
+      isOpen={isOpen}
+      onClose={onClose}
+      background="dark"
+    >
       <figure className="popup__figure">
         <img
           className="popup__image"
           src={card.link}
           alt={`Фото ${card.name}.`}
         />
-        <figcaption className="popup__image-caption">
-          {card.name}
-        </figcaption>
+        <figcaption className="popup__image-caption">{card.name}</figcaption>
         <button
           className="popup__close element-hover"
           type="button"
@@ -25,7 +21,7 @@ function ImagePopup({ card, onClose }) {
           aria-label="Закрыть"
         />
       </figure>
-    </div>
+    </Popup>
   );
 }
 

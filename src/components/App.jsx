@@ -96,15 +96,18 @@ function App() {
     setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
   }
 
+  const [isPlacePopupOpen, setIsPlacePopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
   function handleCardClick(card) {
     setSelectedCard(card);
+    setIsPlacePopupOpen(!isPlacePopupOpen);
   }
 
   function closeAllPopups() {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setIsPlacePopupOpen(false);
     setSelectedCard({ name: "", link: "" });
   }
 
@@ -141,6 +144,7 @@ function App() {
       />
       <ImagePopup
         card={selectedCard}
+        isOpen={isPlacePopupOpen}
         onClose={closeAllPopups}
       />
     </CurrentUserContext.Provider>
