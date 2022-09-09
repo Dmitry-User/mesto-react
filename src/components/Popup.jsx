@@ -11,14 +11,21 @@ function Popup({ isOpen, onClose, children, background }) {
     if (isOpen) {
       document.addEventListener("keydown", handleCloseByEsc);
     }
-
+    
     return () => {
       document.removeEventListener("keydown", handleCloseByEsc);
     };
   }, [isOpen, onClose]);
 
+  function handleCloseByOverlay(e) {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  }
+
   return (
     <div
+      onMouseDown={handleCloseByOverlay}
       className={`popup popup_background_${background} ${isOpen && "popup_is-open"}`}
     >
       {children}

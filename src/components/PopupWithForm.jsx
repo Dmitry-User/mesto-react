@@ -7,7 +7,8 @@ function PopupWithForm({
   onClose,
   onSubmit,
   children,
-  buttonText,
+  isLoading,
+  buttonText
 }) {
   return (
     <Popup
@@ -18,23 +19,23 @@ function PopupWithForm({
     >
       <div className="popup__container">
         <button
-          className="popup__close element-hover"
           onClick={onClose}
           type="button"
+          className="popup__close element-hover"
           aria-label="Закрыть"
         />
         <h2 className="popup__title">{title}</h2>
         <form
-          className="form popup__form"
           name={name}
           onSubmit={onSubmit}
           noValidate
+          className="form popup__form"
         >
           {children}
           <button
-            className="popup__submit"
             type="submit"
-            value=""
+            disabled={isLoading}
+            className="popup__submit"
             aria-label={buttonText}
           >
             {buttonText}
