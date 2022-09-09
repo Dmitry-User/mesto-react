@@ -26,7 +26,7 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading, buttonText
       name,
       about: description,
     });
-  } 
+  }
 
   return (
     <PopupWithForm

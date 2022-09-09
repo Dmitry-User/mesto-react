@@ -16,6 +16,10 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     onCardLike(card);
   }
 
+  function handleDeleteClick() {
+    onCardDelete(card._id);
+  }
+
   function handleClick() {
     onCardClick(card);
   }
@@ -24,7 +28,7 @@ function Card({ card, onCardClick, onCardLike, onCardDelete }) {
     <article key={card._id} className="card">
       <button
         type="button"
-        onClick={() => onCardDelete(card._id)}
+        onClick={handleDeleteClick}
         className={cardDeleteButtonClassName}
         aria-label="Удалить карточку"
       />

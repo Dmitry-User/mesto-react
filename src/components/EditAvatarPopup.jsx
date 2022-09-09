@@ -2,12 +2,12 @@ import { useRef } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading, buttonText }) {
-  const inputRef = useRef();
+  const refValue = useRef();
 
   function handleSubmit(e) {
     e.preventDefault();
     onUpdateAvatar({
-      avatar: inputRef.current.value
+      avatar: refValue.current.value
     });
   }
 
@@ -23,7 +23,7 @@ function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, isLoading, buttonTex
     >
       <label className="popup__label">
         <input
-          ref={inputRef}
+          ref={refValue}
           type="url"
           name="avatar"
           placeholder="Ссылка на фото"

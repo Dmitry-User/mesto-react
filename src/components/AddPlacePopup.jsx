@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading, buttonText }) {
@@ -17,6 +17,11 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading, buttonText }) {
     e.preventDefault();
     onAddPlace({ name, link });
   }
+
+  useEffect(() => {
+    setName("");
+    setLink("");
+  }, [isOpen]);
 
   return (
     <PopupWithForm
@@ -51,7 +56,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace, isLoading, buttonText }) {
           placeholder="Ссылка на фото"
           required
           className="popup__input popup__input_type_link"
-          />
+        />
         <span className="popup__error link-error" />
       </label>
     </PopupWithForm>
