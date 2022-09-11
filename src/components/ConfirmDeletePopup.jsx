@@ -1,8 +1,12 @@
 import PopupWithForm from "./PopupWithForm";
 
-
-function ConfirmDeletePopup({ isOpen, onClose, isLoading, buttonText, onDeleteCard }) {
-
+function ConfirmDeletePopup({
+  isOpen,
+  onClose,
+  isLoading,
+  buttonText,
+  onDeleteCard,
+}) {
   function handleSubmit(e) {
     e.preventDefault();
     onDeleteCard();
@@ -16,6 +20,7 @@ function ConfirmDeletePopup({ isOpen, onClose, isLoading, buttonText, onDeleteCa
       onClose={onClose}
       onSubmit={handleSubmit}
       isLoading={isLoading}
+      isValidForm={true}
       buttonText={buttonText}
     />
   );

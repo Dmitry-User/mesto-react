@@ -13,4 +13,4 @@
 * Nested BEM
 * Flexbox
 * Grid Layout
-* React
+* ReactJS

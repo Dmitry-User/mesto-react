@@ -8,6 +8,7 @@ function PopupWithForm({
   onSubmit,
   children,
   isLoading,
+  isValidForm,
   buttonText
 }) {
   return (
@@ -35,7 +36,7 @@ function PopupWithForm({
           <button
             type="submit"
             disabled={isLoading}
-            className="popup__submit"
+            className={`popup__submit ${!isValidForm && "popup__submit_disable"}`}
             aria-label={buttonText}
           >
             {buttonText}

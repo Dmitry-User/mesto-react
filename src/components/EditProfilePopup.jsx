@@ -1,31 +1,28 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import PopupWithForm from "./PopupWithForm";
+import useForm from "../hooks/useForm";
 
-function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading, buttonText }) {
+function EditProfilePopup({
+  isOpen,
+  onClose,
+  onUpdateUser,
+  isLoading,
+  buttonText,
+}) {
   const currentUser = useContext(CurrentUserContext);
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const { values, setValues, errors, handleChange, isValidForm, resetForm } = useForm(currentUser);
 
   useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
-  }, [currentUser]);
-
-  function handleChangeName(e) {
-    setName(e.target.value);
-  }
-
-  function handleChangeDescription(e) {
-    setDescription(e.target.value);
-  }
+    if (isOpen) {
+      resetForm();
+      setValues(currentUser);
+    }
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    onUpdateUser({
-      name,
-      about: description,
-    });
+    onUpdateUser(values);
   }
 
   return (
@@ -36,35 +33,36 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading, buttonText
       onClose={onClose}
       onSubmit={handleSubmit}
       isLoading={isLoading}
+      isValidForm={isValidForm}
       buttonText={buttonText}
     >
       <label className="popup__label">
         <input
           type="text"
-          value={name}
-          onChange={handleChangeName}
           name="name"
+          value={values.name}
+          onChange={handleChange}
           placeholder="Имя"
           minLength="2"
           maxLength="40"
           required
           className="popup__input popup__input_type_name"
         />
-        <span className="popup__error name-error" />
+        <span className="popup__error name-error">{errors.name}</span>
       </label>
       <label className="popup__label">
         <input
           type="text"
-          value={description}
-          onChange={handleChangeDescription}
           name="about"
+          value={values.about}
+          onChange={handleChange}
           placeholder="О себе"
           minLength="2"
           maxLength="200"
           required
           className="popup__input popup__input_type_about"
         />
-        <span className="popup__error about-error" />
+        <span className="popup__error about-error">{errors.about}</span>
       </label>
     </PopupWithForm>
   );
