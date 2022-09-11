@@ -35,9 +35,9 @@ function EditAvatarPopup({
           name="avatar"
           placeholder="Ссылка на фото"
           required
-          className="popup__input popup__input_type_avatar"
+          className="popup__input"
         />
-        <span className="popup__error avatar-error" />
+        <span className="popup__error" />
       </label>
     </PopupWithForm>
   );

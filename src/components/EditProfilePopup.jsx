@@ -46,9 +46,9 @@ function EditProfilePopup({
           minLength="2"
           maxLength="40"
           required
-          className="popup__input popup__input_type_name"
+          className="popup__input"
         />
-        <span className="popup__error name-error">{errors.name}</span>
+        <span className="popup__error">{errors.name}</span>
       </label>
       <label className="popup__label">
         <input
@@ -60,9 +60,9 @@ function EditProfilePopup({
           minLength="2"
           maxLength="200"
           required
-          className="popup__input popup__input_type_about"
+          className="popup__input"
         />
-        <span className="popup__error about-error">{errors.about}</span>
+        <span className="popup__error">{errors.about}</span>
       </label>
     </PopupWithForm>
   );
