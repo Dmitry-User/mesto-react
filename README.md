@@ -14,3 +14,5 @@
 * Flexbox
 * Grid Layout
 * ReactJS
+
+[Ссылка на проект **Место**](https://dmitry-user.github.io/mesto-react/)
