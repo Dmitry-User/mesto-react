@@ -13,12 +13,29 @@ import { CurrentUserContext } from "../contexts/CurrentUserContext";
 function App() {
   const [currentUser, setCurrentUser] = useState({ name: "", about: "" });
   const [isLoading, setIsLoading] = useState(false);
+  const [cards, setCards] = useState([]);
+  const [cardId, setCardId] = useState("");
+  const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
+  const [isConfirmDeletePopupOpen, setConfirmDeletePopupOpen] = useState(false);
+  const [isPlacePopupOpen, setIsPlacePopupOpen] = useState(false);
 
   useEffect(() => {
     api
       .getUserInfo()
       .then((userInfo) => {
         setCurrentUser(userInfo);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  useEffect(() => {
+    api
+      .getInitialCards()
+      .then((cards) => {
+        setCards(cards);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -47,17 +64,6 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  const [cards, setCards] = useState([]);
-
-  useEffect(() => {
-    api
-      .getInitialCards()
-      .then((cards) => {
-        setCards(cards);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   function handleAddPlaceSubmit(cardData) {
     setIsLoading(true);
     api
@@ -80,7 +86,6 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  const [cardId, setCardId] = useState("");
   function handleCardDelete() {
     const currentCard = cardId;
     setIsLoading(true);
@@ -94,29 +99,23 @@ function App() {
       .finally(() => setIsLoading(false));
   }
 
-  const [isConfirmDeletePopupOpen, setConfirmDeletePopupOpen] = useState(false);
-  function handleDeleteCardClick(card) {
+  function handleDeleteCardClick(cardId) {
     setConfirmDeletePopupOpen(!isConfirmDeletePopupOpen);
-    setCardId(card);
+    setCardId(cardId);
   }
 
-  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   function handleEditAvatarClick() {
     setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
   }
 
-  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
   }
 
-  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   function handleAddPlaceClick() {
     setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
   }
 
-  const [isPlacePopupOpen, setIsPlacePopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
   function handleCardClick(card) {
     setSelectedCard(card);
     setIsPlacePopupOpen(!isPlacePopupOpen);
