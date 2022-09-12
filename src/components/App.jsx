@@ -23,18 +23,9 @@ function App() {
   const [isPlacePopupOpen, setIsPlacePopupOpen] = useState(false);
 
   useEffect(() => {
-    api
-      .getUserInfo()
-      .then((userInfo) => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([userInfo, cards]) => {
         setCurrentUser(userInfo);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    api
-      .getInitialCards()
-      .then((cards) => {
         setCards(cards);
       })
       .catch((err) => console.log(err));
